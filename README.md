@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Exploring the schema with GraphiQL
 
-## Getting Started
+You can explore and inspect the schema of a space using the GraphiQL, an in-browser GraphQL IDE.
 
-First, run the development server:
+To open GraphiQL server visit the `https://graphql.contentful.com/content/v1/spaces/{SPACE}/explore?access_token={CDA_TOKEN}` URL in your browser. You must provide the CDA_TOKEN as a query parameter.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Query Complexity Error
+
+[Github Issue](https://github.com/vercel/next.js/discussions/33642)
+
+https://www.contentful.com/developers/docs/references/graphql/#/introduction/query-complexity-limits
+
+'Query cannot be executed. The maximum allowed complexity for a query is 11000 but it was 100200. Simplify the query e.g. by setting lower limits for collections.'
+
+Fix: Update the settings for the content model Rich Text type to limit the number of the linked entities, blocks, etc. In the validation tab of the settings, I just checked all of the "Limit number of..." checkboxes and set the upper limit to 5.
+
+## Styling Content With Prose
+
+Something happening with Markdown component, overriding/not applying classNames. I have to do it in parent element with tailwind prose utility:
+
+```tsx
+<ParentElement
+  className={`
+        prose
+        prose-img:w-full
+    `}
+>
+  <Child />
+</ParentElement>
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
