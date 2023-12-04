@@ -21,35 +21,78 @@ export default async function Home() {
   const posts: Post[] = await getAllPosts(isEnabled);
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3">
-      {posts.map((post) => {
-        return (
-          <Link
-            href={`/posts/${post.slug}`}
-            key={post.slug}
-            className="border rounded p-4 m-4 max-w-xl cursor-pointer active:bg-lime-200 focus-visible:outline outline-2 outline-offset-2 outline-orange-500"
+    <main className="p-4 space-y-4">
+      <Intro />
+
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {posts.map((post) => {
+          return (
+            <Link
+              href={`/posts/${post.slug}`}
+              key={post.slug}
+              className="border rounded p-4 max-w-xl cursor-pointer active:bg-lime-200 focus-visible:outline outline-2 outline-offset-2 outline-orange-500"
+            >
+              <div className="flex flex-col gap-2">
+                <div className="aspect-[5/2] overflow-hidden bg-neutral-100">
+                  <Image
+                    src={post.coverImage.url}
+                    alt=""
+                    width={500}
+                    height={500}
+                    className="object-cover rounded h-full"
+                  />
+                </div>
+                <h2 className="font-bold">{post.title}</h2>
+                <div>
+                  <p className="text-sm text-neutral-400 font-mono">
+                    {post.date}
+                  </p>
+                  <p>{post.excerpt}</p>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </main>
+  );
+}
+
+function Intro() {
+  const LINK_CLASS =
+    "underline rounded active:bg-lime-200 focus-visible:outline outline-2 outline-offset-2 outline-orange-500";
+
+  return (
+    <section className="space-y-4">
+      <p>
+        Simple blog created with{" "}
+        <span className="text-orange-500">Next.js</span>,{" "}
+        <span className="text-orange-500">Contentful</span> and{" "}
+        <span className="text-orange-500">Tailwind</span> (as of Mon 4 Dec
+        2023).
+      </p>
+
+      <ul>
+        Links:
+        <li>
+          <a
+            href="https://github.com/skatingincentralpark/nextjs-contentful-practice"
+            className={LINK_CLASS}
           >
-            <div className="flex flex-col gap-2">
-              <div className="aspect-[5/2] overflow-hidden bg-neutral-100">
-                <Image
-                  src={post.coverImage.url}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="object-cover rounded h-full"
-                />
-              </div>
-              <h2 className="font-bold">{post.title}</h2>
-              <div>
-                <p className="text-sm text-neutral-400 font-mono">
-                  {post.date}
-                </p>
-                <p>{post.excerpt}</p>
-              </div>
-            </div>
-          </Link>
-        );
-      })}
-    </div>
+            GitHub For This Project
+          </a>
+        </li>
+        <li>
+          <a href="https://www.charliezhao.com/" className={LINK_CLASS}>
+            My Portfolio
+          </a>
+        </li>
+      </ul>
+
+      <p>
+        Features Draft Mode API, on-demand validation and Tailwind Typography
+        plugin for content.
+      </p>
+    </section>
   );
 }
