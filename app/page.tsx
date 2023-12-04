@@ -21,7 +21,7 @@ export default async function Home() {
   const posts: Post[] = await getAllPosts(isEnabled);
 
   return (
-    <div className="flex">
+    <div className="grid grid-cols-3">
       {posts.map((post) => {
         return (
           <Link
