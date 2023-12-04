@@ -8,11 +8,17 @@
  * `... on Author {`
  */
 
+import { Post } from "./types";
+
 const POST_GRAPHQL_FIELDS = `
   slug
   title
   coverImage {
+    title
+    description
     url
+    width
+    height
   }
   date
   author {
@@ -81,7 +87,7 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
   return extractPost(entry);
 }
 
-export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
+export async function getAllPosts(isDraftMode: boolean): Promise<Post[]> {
   const entries = await fetchGraphQL(
     `query {
       postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
@@ -100,7 +106,7 @@ export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
 export async function getPostAndMorePosts(
   slug: string,
   preview: boolean
-): Promise<any> {
+): Promise<{ post: Post; morePosts: Post[] }> {
   const entry = await fetchGraphQL(
     `query {
       postCollection(where: { slug: "${slug}" }, preview: ${

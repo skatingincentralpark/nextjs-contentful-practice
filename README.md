@@ -4,6 +4,8 @@ You can explore and inspect the schema of a space using the GraphiQL, an in-brow
 
 To open GraphiQL server visit the `https://graphql.contentful.com/content/v1/spaces/{SPACE}/explore?access_token={CDA_TOKEN}` URL in your browser. You must provide the CDA_TOKEN as a query parameter.
 
+To get SPACE and CDA_TOKEN, visit api keys on Contentful.
+
 ## Query Complexity Error
 
 [Github Issue](https://github.com/vercel/next.js/discussions/33642)
@@ -28,3 +30,9 @@ Something happening with Markdown component, overriding/not applying classNames.
   <Child />
 </ParentElement>
 ```
+
+## Webhooks
+
+https://www.contentful.com/developers/docs/webhooks/overview/
+
+Webhooks are HTTP callbacks which can be used to send notifications when data in Contentful is changed, allowing external systems to react to changes to do things like rebuild or invalidate the cache.

@@ -21,7 +21,7 @@ export default async function Home() {
   const posts: Post[] = await getAllPosts(isEnabled);
 
   return (
-    <div className="grid grid-cols-3">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3">
       {posts.map((post) => {
         return (
           <Link
@@ -36,7 +36,7 @@ export default async function Home() {
                   alt=""
                   width={500}
                   height={500}
-                  className="object-cover rounded"
+                  className="object-cover rounded h-full"
                 />
               </div>
               <h2 className="font-bold">{post.title}</h2>
