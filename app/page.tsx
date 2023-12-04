@@ -27,7 +27,7 @@ export default async function Home() {
           <Link
             href={`/posts/${post.slug}`}
             key={post.slug}
-            className="border rounded p-4 m-4 max-w-xl cursor-pointer active:bg-lime-200"
+            className="border rounded p-4 m-4 max-w-xl cursor-pointer active:bg-lime-200 focus-visible:outline outline-2 outline-offset-2 outline-orange-500"
           >
             <div className="flex flex-col gap-2">
               <div className="aspect-[5/2] overflow-hidden bg-neutral-100">

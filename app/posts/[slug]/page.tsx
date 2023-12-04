@@ -23,7 +23,10 @@ export default async function PostPage({
 
   return (
     <div className="p-4 space-y-4">
-      <Link href="/" className="underline">
+      <Link
+        href="/"
+        className="underline rounded active:bg-lime-200 focus-visible:outline outline-2 outline-offset-2 outline-orange-500"
+      >
         Back to home
       </Link>
       <div className={proseClass}>
@@ -54,11 +57,11 @@ const proseClass = `
   prose
   text-black
 
-  prose-h1:text-lg
+  prose-h1:text-xl
 
-  prose-h2:text-base
+  prose-h2:text-lg
 
-  prose-p:text-sm
+  prose-p:text-base
   prose-a:text-blue-500
   prose-a:cursor-pointer
 
