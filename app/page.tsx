@@ -25,7 +25,7 @@ export default async function Home() {
       <Intro />
 
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {posts.map((post) => {
+        {posts.map((post, i) => {
           return (
             <Link
               href={`/posts/${post.slug}`}
@@ -33,13 +33,15 @@ export default async function Home() {
               className="border rounded p-4 max-w-xl cursor-pointer active:bg-lime-200 focus-visible:outline outline-2 outline-offset-2 outline-orange-500"
             >
               <div className="flex flex-col gap-2">
-                <div className="aspect-[5/2] overflow-hidden bg-neutral-100">
+                <div className="aspect-[5/2] overflow-hidden">
                   <Image
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 30vw"
+                    priority={i < 4}
                     src={post.coverImage.url}
-                    alt=""
+                    alt={post.title}
                     width={500}
                     height={500}
-                    className="object-cover rounded h-full"
+                    className="object-cover h-full object-top bg-neutral-100"
                   />
                 </div>
                 <h2 className="font-bold">{post.title}</h2>

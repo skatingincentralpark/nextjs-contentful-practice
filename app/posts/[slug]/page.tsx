@@ -34,7 +34,7 @@ export default async function PostPage({
       <div>
         <Link
           href="/"
-          className={`${LINK_CLASS} fixed py-1 px-4 top-4 left-4 bg-white shadow-lg border`}
+          className={`${LINK_CLASS} fixed py-1 px-4 bottom-4 xs:bottom-auto xs:top-4 left-4 bg-white shadow-lg border z-10`}
         >
           🏡 Back to home
         </Link>
@@ -43,7 +43,7 @@ export default async function PostPage({
           alt={imageAlt}
           width={coverImage.width}
           height={coverImage.height}
-          className="max-h-96 object-cover bg-lime-200"
+          className="max-h-96 object-cover bg-lime-200 object-top"
         />
       </div>
       <div className={`${proseClass} p-4`}>
@@ -55,7 +55,7 @@ export default async function PostPage({
         </div>
         <Markdown content={content} />
       </div>
-      <div className="p-4 border-t border-black">
+      <div className="p-4 border-t border-black text-right xs:text-left">
         {morePosts.length > 0 && (
           <>
             <h2 className="font-bold">More Posts</h2>
@@ -99,6 +99,7 @@ const proseClass = `
   prose-li:text-sm
 
   prose-img:w-full
+  prose-img:m-0
 
   max-w-md
 `;
