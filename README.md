@@ -36,3 +36,10 @@ Something happening with Markdown component, overriding/not applying classNames.
 https://www.contentful.com/developers/docs/webhooks/overview/
 
 Webhooks are HTTP callbacks which can be used to send notifications when data in Contentful is changed, allowing external systems to react to changes to do things like rebuild or invalidate the cache.
+
+## Typescript: Children
+
+There are two common paths to describing the children of a component.
+
+- `React.ReactNode` type. Very broad definition. It's a union of all the possible types that can be passed as children in JSX
+- `React.ReactElement` type, which is only JSX elements and not JavaScript primitives like strings or numbers.

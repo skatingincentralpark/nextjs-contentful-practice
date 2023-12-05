@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
+import ImageWithLightbox from "@/components/image-with-lightbox";
 
 interface Asset {
   sys: {
@@ -8,6 +8,8 @@ interface Asset {
   };
   url: string;
   description: string;
+  width: number;
+  height: number;
 }
 
 interface AssetLink {
@@ -32,7 +34,12 @@ function RichTextAsset({
 
   if (asset?.url) {
     return (
-      <Image src={asset.url} alt={asset.description} width={500} height={500} />
+      <ImageWithLightbox
+        src={asset.url}
+        alt={asset.description}
+        width={asset.width}
+        height={asset.height}
+      />
     );
   }
 
